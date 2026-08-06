@@ -18,4 +18,4 @@ samples, guidance on mobile development, and a full API reference.
 
 # Flutter doctor screenshot
 
-![FlutterPrueba](https://imgur.com/a/wcMNdX2)
+<img width="968" height="263" alt="Captura de pantalla 2026-08-06 114955" src="https://github.com/user-attachments/assets/e19b4609-82de-4e88-8a9b-d0f88aa05bc8" />
