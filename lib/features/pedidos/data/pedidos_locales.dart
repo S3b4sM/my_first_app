@@ -9,10 +9,8 @@ import 'package:my_first_app/features/pedidos/domain/pedidos_repository.dart';
 typedef LectorDeAssets = Future<String> Function(String ruta);
 
 class LocalOrders implements PedidosRepository {
-  LocalOrders({
-    LectorDeAssets? lector,
-    this.ruta = 'assets/data/pedidos.json',
-  }) : _lector = lector ?? rootBundle.loadString;
+  LocalOrders({LectorDeAssets? lector, this.ruta = 'assets/data/pedidos.json'})
+    : _lector = lector ?? rootBundle.loadString;
 
   final LectorDeAssets _lector;
   final String ruta;

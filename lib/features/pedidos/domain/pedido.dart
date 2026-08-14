@@ -19,6 +19,7 @@ abstract class Order with _$Pedido {
     required OrderStatus estado,
     Medidas? medidas,
   }) = _Pedido;
+
   /// Constructor privado obligatorio para poder añadir métodos propios en Freezed
   const Order._();
 
