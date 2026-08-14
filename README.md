@@ -1,21 +1,18 @@
-# my_first_app
+# Sistema de Gestión de Sastrería
 
-A new Flutter project.
+Plataforma móvil para el control de órdenes de trabajo, seguimiento de medidas anatómicas y gestión de estados de confección en tiempo real. 
 
-## Getting Started
+## El dominio
 
-This project is a starting point for a Flutter application.
+- `Pedido` — entidad principal. Identidad: `id`. Representa una orden de trabajo única para un cliente.
+- `Medidas` — objeto de valor. Almacena las dimensiones anatómicas. Se compara por su contenido, no tiene identidad propia.
+- `EstadoPedido` — clase sellada (sealed). Garantiza los estados lógicos de la prenda: `Pendiente` · `EnConfeccion` · `Terminado` · `Entregado`. Restringe la edición a los estados permitidos.
 
-A few resources to get you started if this is your first Flutter project:
+**Decisión de Arquitectura** 
+Implementé un modelo híbrido usando la librería Freezed. Escrib manualmente la factoría `fromJson` para preservar el control del manejo de errores con la excepción personalizada `CampoInvalido`, mientras que delegué a Freezed la generación mecánica de la igualdad profunda (`==`), `hashCode` y el método `copyWith`. Conservé los archivos generados en el repositorio para agilizar la compilación inicial
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## Cómo correrlo
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-# Flutter doctor screenshot
-
-![FlutterPrueba](https://imgur.com/a/wcMNdX2)
+    flutter pub get
+    flutter test
+    flutter run

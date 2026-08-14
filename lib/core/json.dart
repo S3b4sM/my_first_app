@@ -1,0 +1,80 @@
+class CampoInvalido implements Exception {
+  const CampoInvalido(this.campo, this.motivo, this.valor);
+
+  final String campo;
+  final String motivo;
+  final Object? valor;
+
+  @override
+  String toString() => 'CampoInvalido: \'$campo\' $motivo (llegó: $valor)';
+}
+
+String leerTexto(Map<String, dynamic> json, String campo) {
+  final valor = json[campo];
+  if (valor is String && valor.trim().isNotEmpty) return valor;
+  throw CampoInvalido(campo, 'debe ser un texto no vacío', valor);
+}
+
+String? leerTextoOpcional(Map<String, dynamic> json, String campo) {
+  final valor = json[campo];
+  if (valor == null) return null;
+  if (valor is String) return valor;
+  throw CampoInvalido(campo, 'debe ser un texto o venir ausente', valor);
+}
+
+double leerDecimal(Map<String, dynamic> json, String campo) {
+  final valor = json[campo];
+  if (valor is num) return valor.toDouble();
+  throw CampoInvalido(campo, 'debe ser un número', valor);
+}
+
+DateTime leerFecha(Map<String, dynamic> json, String campo) {
+  final valor = json[campo];
+  if (valor is! String) {
+    throw CampoInvalido(campo, 'debe ser una fecha en texto', valor);
+  }
+  final fecha = DateTime.tryParse(valor);
+  if (fecha == null) {
+    throw CampoInvalido(campo, 'no es una fecha valdia', valor);
+  }
+  return fecha.toUtc();
+}
+
+Map<String, dynamic> leerMapa(Map<String, dynamic> json, String campo) {
+  final valor = json[campo];
+  if (valor is Map<String, dynamic>) return valor;
+  throw CampoInvalido(campo, 'debe ser un objeto', valor);
+}
+
+List<String> leerTextos(Map<String, dynamic> json, String campo) {
+  final valor = json[campo];
+  if (valor == null) return const <String>[];
+  if (valor is! List) throw CampoInvalido(campo, 'debe ser una lista', valor);
+  return List<String>.unmodifiable(
+    valor.map(
+      (e) => e is String
+          ? e
+          : throw CampoInvalido(
+              campo,
+              'todos sus elementos deben ser texto',
+              e,
+            ),
+    ),
+  );
+}
+
+int leerEntero(Map<String, dynamic> json, String campo) {
+  final valor = json[campo];
+  if (valor is int) return valor;
+  throw CampoInvalido(campo, 'debe ser un número entero', valor);
+}
+
+Map<String, dynamic>? leerMapaOpcional(
+  Map<String, dynamic> json,
+  String campo,
+) {
+  final valor = json[campo];
+  if (valor == null) return null;
+  if (valor is Map<String, dynamic>) return valor;
+  throw CampoInvalido(campo, 'debe ser un objeto o venir ausente', valor);
+}

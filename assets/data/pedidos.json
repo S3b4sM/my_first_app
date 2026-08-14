@@ -1,0 +1,39 @@
+[
+  {
+    "id": "ped-001",
+    "cliente": "María Gómez",
+    "prenda": "Vestido de gala azul",
+    "costoTotal": 180000,
+    "medidas": { "busto": 92, "cintura": 74, "cadera": 98, "largo": 145 },
+    "creadoEn": "2026-08-10T14:30:00Z",
+    "estado": { 
+      "tipo": "entregado", 
+      "fechaEntregaReal": "2026-08-14T20:00:00Z" 
+    }
+  },
+  {
+    "id": "ped-002",
+    "cliente": "Carlos Mendoza",
+    "prenda": "Dobladillo pantalón dril",
+    "costoTotal": 15000,
+    "creadoEn": "2026-08-12T21:15:00Z",
+    "estado": { 
+      "tipo": "pendiente", 
+      "fechaEntregaAcordada": "2026-08-16T22:00:00Z", 
+      "abonoInicial": 0 
+    }
+  },
+  {
+    "id": "ped-003",
+    "cliente": "Ana Lucia Ramirez",
+    "prenda": "Falda sastre uniforme",
+    "costoTotal": 65000,
+    "medidas": { "cintura": 80, "cadera": 105, "largo": 60 },
+    "creadoEn": "2026-08-13T13:00:00Z",
+    "estado": { 
+      "tipo": "en_confeccion", 
+      "fechaInicio": "2026-08-14T14:00:00Z",
+      "materialesAsignados": ["Tela Lino", "Cremallera invisible 15cm", "Hilo oscuro"]
+    }
+  }
+]
